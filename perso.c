@@ -3,7 +3,7 @@
 #include "perso.h"
 
 int main(){
-	printf("   *** Gestion de personnel ***");
+	printf("   *** Gestion de ETUDIANTS ***");
 	short rep=1;
 	int choix;
 	do{
