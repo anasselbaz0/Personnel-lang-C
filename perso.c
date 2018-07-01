@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #define TAILLE_ID 4
 #include "perso.h"
 
 int main(){
+	Personne* MAIN; //liste chaine ou on va stocker les donnees
 	short rep=1;
 	int choix;
 	do{
@@ -17,8 +19,7 @@ int main(){
 				break;
 			case 1: //Ajouter une personne
 				system("clear");
-				int m = ajouterPersonne();
-				if(m == 1){
+				if(ajouterPersonne(MAIN)){
 					printf("Personne ajoute!");
 				}
 				else{
@@ -33,7 +34,7 @@ int main(){
 				printf("  Nom du personne a supprimer : ");
 				char* p_nom;
 				scanf("%s",p_nom);
-				supprimerPersonne(p_nom);
+				supprimerPersonne(MAIN, p_nom);
 				free(p_nom);
 				rep=1;
 				break;
@@ -45,6 +46,11 @@ int main(){
 			case 4://Impression des donnees
 				system("clear");
 				printf("   *** Gestion de personnel ***\n\n");
+				printf("Nom de fichier : ");
+				char* filename;// = malloc(20*sizeof(char));
+				scanf("%s",filename);
+				dataToFile(filename, MAIN);
+				printf("Enregistre vers %s", filename);
 				rep=1;
 				break;
 		}
